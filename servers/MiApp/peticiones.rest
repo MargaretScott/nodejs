@@ -31,3 +31,6 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/products/list?page=10&total=5
+
+###
+PUT http://localhost:3000/students/edit

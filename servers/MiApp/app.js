@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const fs = require('fs');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -30,6 +31,35 @@ app.use((req, res, next) => {
   req.fechaActual = new Date();
   // res.send('Respondo desde el middleware');
   next();
+});
+
+// Middleware que responda en función de un número aleatorio
+app.use((req, res, next) => {
+  const randomNum = Math.random();
+  console.log(randomNum);
+  if (randomNum > 0.99) {
+    res.send('El número aleatorio es mayor de 0.6');
+  } else {
+    next();
+  }
+});
+
+// TODO: Si la hora está entre las 18:00 y las 08:00 mantener cerrada la aplicación (no se puede acceder a ninguna ruta)
+
+// Middleware para registrar en un fichero los accesos a nuestra aplicación
+app.use((req, res, next) => {
+
+  const linea = `${new Date().toLocaleString()} - METHOD: ${req.method} - URL: ${req.url}\n`;
+  const fileName = `./main.log`;
+
+  fs.appendFile(fileName, linea, (err) => {
+    if (err) {
+      console.log(err);
+      return res.send('Error al escribir en el fichero de LOG');
+    }
+    // la línea se ha escrito correctamente
+    next();
+  });
 });
 
 
