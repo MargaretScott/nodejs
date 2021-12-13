@@ -21,6 +21,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+/**
+ * MIDDLEWARES
+ */
+
+app.use((req, res, next) => {
+  console.log('Fecha ', new Date().toLocaleDateString());
+  req.fechaActual = new Date();
+  // res.send('Respondo desde el middleware');
+  next();
+});
+
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);

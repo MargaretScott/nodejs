@@ -9,6 +9,7 @@ router.post('/create', (req, res) => {
 });
 
 router.put('/edit', (req, res) => {
+    console.log(req.fechaActual);
     res.send('Ruta /students/edit PUT');
 });
 
