@@ -1,5 +1,8 @@
 // Todas las sentencias SQL que vamos ejecutar sobre la tabla clientes
 
+const req = require("express/lib/request");
+
+// TODO: refactorizar métodos
 const getAll = () => {
     return new Promise((resolve, reject) => {
         db.query('select * from clientes', (err, result) => {
@@ -36,6 +39,19 @@ const getByEdad = (edad) => {
     });
 }
 
+const create = ({ nombre, apellidos, direccion, email, edad, genero, cuota, fecha_nacimiento, dni }) => {
+    return new Promise((resolve, reject) => {
+        db.query(
+            'insert into clientes (nombre, apellidos, direccion, email, edad, genero, cuota, fecha_nacimiento, dni) values(?, ?, ?, ?, ?, ?, ?, ?, ?)',
+            [nombre, apellidos, direccion, email, edad, genero, cuota, fecha_nacimiento, dni],
+            (err, result) => {
+                if (err) return reject(err);
+                resolve(result);
+            }
+        )
+    });
+}
+
 module.exports = {
-    getAll, getById, getByEdad
+    getAll, getById, getByEdad, create
 }

@@ -65,9 +65,30 @@ router.get('/:clienteId', (req, res) => {
 
 
 
-router.post('/', (req, res) => {
-    res.send('POST de /api/clientes');
+router.post('/', async (req, res) => {
+    try {
+        const result = await clienteModel.create(req.body);
+
+        const cliente = await clienteModel.getById(result.insertId);
+        res.json(cliente);
+    } catch (err) {
+        res.json({ error: err.message });
+    }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 router.put('/', (req, res) => {
     res.send('PUT de /api/clientes');

@@ -20,10 +20,26 @@ POST http://localhost:3000/clientes/update
 GET http://localhost:3000/api/clientes
 
 ###
-GET http://localhost:3000/api/clientes/75
+GET http://localhost:3000/api/clientes/85
+
+###
+GET http://localhost:3000/api/clientes/mayores/74
 
 ###
 POST http://localhost:3000/api/clientes
+Content-Type: application/json
+
+{
+  "nombre": "Ramiro",
+  "apellidos": "Romero",
+  "direccion": "41 Gran Via",
+  "email": "ramiroromero1@jiathis.com",
+  "edad": 23,
+  "genero": "M",
+  "cuota": "19.90",
+  "fecha_nacimiento": "1998-09-15",
+  "dni": "89187627L"
+}
 
 ###
 PUT http://localhost:3000/api/clientes
