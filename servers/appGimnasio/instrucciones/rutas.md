@@ -14,3 +14,16 @@ Todas las rutas responden con un res.send
 - Conectamos **app.js** con **clientes.js**
 - Generamos las rutas de arriba
 - Dentro del fichero **peticiones.rest** creamos las pruebas sobre dichas rutas
+
+
+/api/clientes/mayores/21
+/api/clientes/mayores/87
+
+- Recupera los clientes cuya edad es mayor de la edad que recibimos en la URL
+
+## TODO:
+
+- Pensar: ¿Dónde gestiono esta URL? -> Probamos que la URL funciona
+- Probar la query en la BD
+- Dentro del modelo de cliente -> getByEdad -> Resuelve a un array de clientes - NO HAY QUE DEVOLVER UNO SOLO
+- En el manejador de ruta llamamos a dicho método

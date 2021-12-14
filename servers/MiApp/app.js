@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const fs = require('fs');
+const dayjs = require('dayjs');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -45,6 +46,40 @@ app.use((req, res, next) => {
 });
 
 // TODO: Si la hora está entre las 18:00 y las 08:00 mantener cerrada la aplicación (no se puede acceder a ninguna ruta)
+// dayjs
+app.use((req, res, next) => {
+  const currentDate = new Date();
+  const hours = currentDate.getHours();
+  console.log(currentDate);
+  console.log(hours);
+  if (hours >= 8 && hours <= 18) {
+    next();
+  } else {
+    res.send('La aplicación está cerrada');
+  }
+});
+
+app.use((req, res, next) => {
+  const currentDate = dayjs();
+  const navidad = dayjs('2021-12-25');
+  console.log(navidad.diff(currentDate, 'seconds'));
+  next();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Middleware para registrar en un fichero los accesos a nuestra aplicación
 app.use((req, res, next) => {

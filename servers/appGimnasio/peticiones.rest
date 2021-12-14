@@ -20,6 +20,9 @@ POST http://localhost:3000/clientes/update
 GET http://localhost:3000/api/clientes
 
 ###
+GET http://localhost:3000/api/clientes/75
+
+###
 POST http://localhost:3000/api/clientes
 
 ###

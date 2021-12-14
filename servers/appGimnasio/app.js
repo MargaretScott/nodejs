@@ -9,6 +9,9 @@ var usersRouter = require('./routes/users');
 const clientesRouter = require('./routes/clientes');
 const apiRouter = require('./routes/api');
 
+// Lanzar configuración Base de datos
+require('./dbConfig');
+
 var app = express();
 
 // view engine setup
