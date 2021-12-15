@@ -1,57 +1,37 @@
 // Todas las sentencias SQL que vamos ejecutar sobre la tabla clientes
+const { executeQuery, executeQueryOne } = require('../helpers');
+const QueryManager = require('../QueryManager');
 
-const req = require("express/lib/request");
-
-// TODO: refactorizar métodos
 const getAll = () => {
-    return new Promise((resolve, reject) => {
-        db.query('select * from clientes', (err, result) => {
-            if (err) return reject(err);
-            resolve(result);
-        });
-    });
+    // const queryMg = new QueryManager('select * from clientes');
+    // return queryMg.executeQuery();
+    return new QueryManager('select * from clientes').executeQuery();
+    // return executeQuery('select * from clientes');
 }
 
 const getById = (clienteId) => {
-    return new Promise((resolve, reject) => {
-        db.query(
-            'select * from clientes where id = ?',
-            [clienteId],
-            (err, result) => {
-                if (err) return reject(err);
-                if (result.length === 0) return resolve(null); // No se encuentra el cliente
-                resolve(result[0]); // Devolvemos el cliente encontrado
-            }
-        );
-    });
+    return executeQueryOne('select * from clientes where id = ?', [clienteId]);
 }
 
 const getByEdad = (edad) => {
-    return new Promise((resolve, reject) => {
-        db.query(
-            'select * from clientes where edad > ?',
-            [edad],
-            (err, result) => {
-                if (err) return reject(err);
-                resolve(result);
-            }
-        );
-    });
+    return executeQuery('select * from clientes where edad > ?', [edad]);
 }
 
 const create = ({ nombre, apellidos, direccion, email, edad, genero, cuota, fecha_nacimiento, dni }) => {
-    return new Promise((resolve, reject) => {
-        db.query(
-            'insert into clientes (nombre, apellidos, direccion, email, edad, genero, cuota, fecha_nacimiento, dni) values(?, ?, ?, ?, ?, ?, ?, ?, ?)',
-            [nombre, apellidos, direccion, email, edad, genero, cuota, fecha_nacimiento, dni],
-            (err, result) => {
-                if (err) return reject(err);
-                resolve(result);
-            }
-        )
-    });
+    return executeQuery('insert into clientes (nombre, apellidos, direccion, email, edad, genero, cuota, fecha_nacimiento, dni) values(?, ?, ?, ?, ?, ?, ?, ?, ?)', [nombre, apellidos, direccion, email, edad, genero, cuota, fecha_nacimiento, dni]);
+}
+
+const deleteById = (clienteId) => {
+    return executeQuery('delete from clientes where id = ?', [clienteId]);
+}
+
+const updateById = (clienteId, { cuota, nombre, apellidos, direccion, email, edad, genero, dni }) => {
+    return executeQuery(
+        'update clientes set nombre = ?, apellidos = ?, direccion = ?, email = ?, edad = ?, genero = ?, cuota = ?, dni = ? where id = ?',
+        [nombre, apellidos, direccion, email, edad, genero, cuota, dni, clienteId]
+    );
 }
 
 module.exports = {
-    getAll, getById, getByEdad, create
+    getAll, getById, getByEdad, create, deleteById, updateById
 }

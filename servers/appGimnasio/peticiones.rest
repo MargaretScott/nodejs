@@ -42,7 +42,19 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:3000/api/clientes
+PUT http://localhost:3000/api/clientes/85
+Content-Type: application/json
+
+{
+  "nombre": "Lonee",
+  "apellidos": "Vautre",
+  "direccion": "41 Kipling Court",
+  "email": "lvautre2c@jiathis.com",
+  "edad": 53,
+  "genero": "F",
+  "cuota": "39.90",
+  "dni": "216724920j"
+}
 
 ###
-DELETE http://localhost:3000/api/clientes
+DELETE http://localhost:3000/api/clientes/14

@@ -1,12 +1,6 @@
 const router = require('express').Router();
 
-// TODO: hablar del destructuring
 const clienteModel = require('../../models/cliente.model');
-
-
-
-
-
 
 // router.get('/', (req, res) => {
 //     clienteModel.getAll()
@@ -53,23 +47,27 @@ router.get('/:clienteId', (req, res) => {
         .catch(err => res.json({ error: err.message }));
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
 router.post('/', async (req, res) => {
     try {
         const result = await clienteModel.create(req.body);
 
         const cliente = await clienteModel.getById(result.insertId);
+        res.json(cliente);
+    } catch (err) {
+        res.json({ error: err.message });
+    }
+});
+
+
+
+
+
+
+
+router.put('/:clienteId', async (req, res) => {
+    try {
+        const result = await clienteModel.updateById(req.params.clienteId, req.body);
+        const cliente = await clienteModel.getById(req.params.clienteId);
         res.json(cliente);
     } catch (err) {
         res.json({ error: err.message });
@@ -89,13 +87,18 @@ router.post('/', async (req, res) => {
 
 
 
-
-router.put('/', (req, res) => {
-    res.send('PUT de /api/clientes');
-});
-
-router.delete('/', (req, res) => {
-    res.send('DELETE de /api/clientes');
+router.delete('/:clienteId', (req, res) => {
+    clienteModel.deleteById(req.params.clienteId)
+        .then(result => {
+            if (result.affectedRows === 1) {
+                res.json({ mensaje: 'Se ha borrado el cliente' });
+            } else {
+                res.json({ mensaje: 'El cliente no existe' });
+            }
+        })
+        .catch(err => {
+            res.json({ error: err.message });
+        });
 })
 
 module.exports = router;
