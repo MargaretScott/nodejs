@@ -58,12 +58,6 @@ router.post('/', async (req, res) => {
     }
 });
 
-
-
-
-
-
-
 router.put('/:clienteId', async (req, res) => {
     try {
         const result = await clienteModel.updateById(req.params.clienteId, req.body);
@@ -73,19 +67,6 @@ router.put('/:clienteId', async (req, res) => {
         res.json({ error: err.message });
     }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 router.delete('/:clienteId', (req, res) => {
     clienteModel.deleteById(req.params.clienteId)

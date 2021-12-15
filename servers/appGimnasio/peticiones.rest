@@ -46,11 +46,11 @@ PUT http://localhost:3000/api/clientes/85
 Content-Type: application/json
 
 {
-  "nombre": "Lonee",
+  "nombre": "Angelines",
   "apellidos": "Vautre",
   "direccion": "41 Kipling Court",
   "email": "lvautre2c@jiathis.com",
-  "edad": 53,
+  "edad": 26,
   "genero": "F",
   "cuota": "39.90",
   "dni": "216724920j"
@@ -58,3 +58,51 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3000/api/clientes/14
+
+### PROFESORES
+GET http://localhost:3000/api/profesores
+
+###
+POST http://localhost:3000/api/profesores
+Content-Type: application/json
+
+{
+  "nombre": "Mr Miyagui",
+  "experiencia": 25
+}
+
+###
+PUT http://localhost:3000/api/profesores/107
+Content-Type: application/json
+
+{
+  "nombre": "Mr Miyagui",
+  "experiencia": 30
+}
+
+###
+DELETE http://localhost:3000/api/profesores/107
+
+###
+GET http://localhost:3000/api/profesores/91
+
+### REGISTRO - LOGIN
+###
+POST http://localhost:3000/api/usuarios/registro
+Content-Type: application/json
+
+{
+  "username": "ratoncito",
+  "nombre": "Mario",
+  "email": "raton4@gmail.com",
+  "password": "12345"
+}
+
+###
+POST http://localhost:3000/api/usuarios/login
+Content-Type: application/json
+
+{
+  "email": "raton@gmail.com",
+  "password": "12345"
+}

@@ -32,6 +32,10 @@ const updateById = (clienteId, { cuota, nombre, apellidos, direccion, email, eda
     );
 }
 
+const getByProfesor = (profesorId) => {
+    return executeQuery('select * from clientes where profesor_id = ?', [profesorId]);
+}
+
 module.exports = {
-    getAll, getById, getByEdad, create, deleteById, updateById
+    getAll, getById, getByEdad, create, deleteById, updateById, getByProfesor
 }

@@ -27,3 +27,4 @@ Todas las rutas responden con un res.send
 - Probar la query en la BD
 - Dentro del modelo de cliente -> getByEdad -> Resuelve a un array de clientes - NO HAY QUE DEVOLVER UNO SOLO
 - En el manejador de ruta llamamos a dicho método
+
