@@ -1,3 +1,6 @@
+const dayjs = require('dayjs');
+const jwt = require('jsonwebtoken');
+
 const executeQuery = (sql, values = []) => {
     return new Promise((resolve, reject) => {
         db.query(sql, values, (err, result) => {
@@ -17,6 +20,15 @@ const executeQueryOne = (sql, values = []) => {
     });
 }
 
+const createToken = (usuario) => {
+    const obj = {
+        usuario_id: usuario.id,
+        fecha_expiracion: dayjs().add(5, 'minutes').unix()
+    }
+    // TODO: mover datos al fichero de entorno
+    return jwt.sign(obj, 'en un lugar de la mancha');
+}
+
 module.exports = {
-    executeQuery, executeQueryOne
+    executeQuery, executeQueryOne, createToken
 }

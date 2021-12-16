@@ -18,6 +18,7 @@ POST http://localhost:3000/clientes/update
 ### API URLs
 ###
 GET http://localhost:3000/api/clientes
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvX2lkIjoyMCwiZmVjaGFfZXhwaXJhY2lvbiI6MTYzOTY1OTY1MSwiaWF0IjoxNjM5NjU5MzUxfQ.6pTtkMN-Roqke0FmGTe4ZAKnKEfuR8rKAa9VwsaWc04
 
 ###
 GET http://localhost:3000/api/clientes/85
@@ -92,10 +93,10 @@ POST http://localhost:3000/api/usuarios/registro
 Content-Type: application/json
 
 {
-  "username": "ratoncito",
-  "nombre": "Mario",
-  "email": "raton4@gmail.com",
-  "password": "12345"
+  "username": "Belen",
+  "nombre": "Belen",
+  "email": "belen@gmail.com",
+  "password": "mariO12345!"
 }
 
 ###
@@ -103,6 +104,6 @@ POST http://localhost:3000/api/usuarios/login
 Content-Type: application/json
 
 {
-  "email": "raton@gmail.com",
-  "password": "12345"
+  "email": "belen@gmail.com",
+  "password": "mariO12345!"
 }
