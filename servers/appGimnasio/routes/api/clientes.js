@@ -1,3 +1,8 @@
+// Si antes de llegar a un manejador final, la petición pasa por el middleware checkToken, podemos recuperar el valor de req.user
+// GET /api/clientes/me -> Recupera todos los clientes del usuario logado
+
+// GET /api/usuarios/perfil -> Devuelve todos los datos del usuario logado
+
 const router = require('express').Router();
 
 const clienteModel = require('../../models/cliente.model');
@@ -26,6 +31,15 @@ router.get('/mayores/:edad', async (req, res) => {
         // TODO: hablar del destructuring
         const result = await clienteModel.getByEdad(req.params.edad);
         res.json(result);
+    } catch (err) {
+        res.json({ error: err.message });
+    }
+});
+
+router.get('/me', async (req, res) => {
+    try {
+        const clientes = await clienteModel.getByUsuario(req.user.id);
+        res.json(clientes);
     } catch (err) {
         res.json({ error: err.message });
     }

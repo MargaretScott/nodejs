@@ -1,7 +1,9 @@
 const jwt = require('jsonwebtoken');
 const dayjs = require('dayjs');
 
-const checkToken = (req, res, next) => {
+const usuarioModel = require('../models/usuario.model');
+
+const checkToken = async (req, res, next) => {
     // 1 - Comprobar si el token viene incluido en las cabeceras
     if (!req.headers.authorization) {
         return res.json({ error: 'Debes incluir la cabecera Authorization' });
@@ -24,6 +26,9 @@ const checkToken = (req, res, next) => {
         return res.json({ error: 'El token está caducado' });
     }
 
+    // Usuario tiene autorización dentro de la API
+    const usuario = await usuarioModel.getById(obj.usuario_id);
+    req.user = usuario;
 
     next();
 }

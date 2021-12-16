@@ -10,3 +10,9 @@ router.use('/profesores', checkToken, profesoresApiRouter);
 router.use('/usuarios', usuariosApiRouter);
 
 module.exports = router;
+
+
+// TODO: Middleware para roles
+// TODO: Sacar datos al fichero de entorno (.env)
+// TODO: cors
+// TODO: App Angular

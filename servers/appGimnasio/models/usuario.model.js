@@ -8,4 +8,8 @@ const getByEmail = (email) => {
     return executeQueryOne('select * from usuarios where email = ?', [email]);
 }
 
-module.exports = { create, getByEmail };
+const getById = (usuarioId) => {
+    return executeQueryOne('select * from usuarios where id = ?', [usuarioId]);
+}
+
+module.exports = { create, getByEmail, getById };

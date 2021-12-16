@@ -23,7 +23,7 @@ const executeQueryOne = (sql, values = []) => {
 const createToken = (usuario) => {
     const obj = {
         usuario_id: usuario.id,
-        fecha_expiracion: dayjs().add(5, 'minutes').unix()
+        fecha_expiracion: dayjs().add(1, 'week').unix()
     }
     // TODO: mover datos al fichero de entorno
     return jwt.sign(obj, 'en un lugar de la mancha');

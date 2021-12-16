@@ -3,6 +3,11 @@ const usuarioModel = require('../../models/usuario.model');
 const bcrypt = require('bcryptjs');
 const { body, validationResult } = require('express-validator');
 const { createToken } = require('../../helpers');
+const { checkToken } = require('../middlewares');
+
+router.get('/perfil', checkToken, (req, res) => {
+    res.json(req.user);
+});
 
 router.post('/registro',
     body('username')
