@@ -53,14 +53,14 @@ router.post('/login', async (req, res) => {
     const usuario = await usuarioModel.getByEmail(req.body.email);
 
     if (!usuario) {
-        return res.json({ error: 'Error en usuario y/o contraseña1' });
+        return res.status(400).json({ error: 'Error en usuario y/o contraseña1' });
     }
 
     // ¿Son las password iguales?
     const iguales = bcrypt.compareSync(req.body.password, usuario.password);
 
     if (!iguales) {
-        return res.json({ error: 'Error en usuario y/o contraseña2' });
+        return res.status(400).json({ error: 'Error en usuario y/o contraseña2' });
     }
 
     res.json({

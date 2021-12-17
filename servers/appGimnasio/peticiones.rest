@@ -18,7 +18,7 @@ POST http://localhost:3000/clientes/update
 ### API URLs
 ###
 GET http://localhost:3000/api/clientes
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvX2lkIjoxOCwiZmVjaGFfZXhwaXJhY2lvbiI6MTY0MDI2OTk4NiwiaWF0IjoxNjM5NjY1MTg2fQ.8kbdBCcJw60PkmyMMdOyQWP1j8Awn89WhJr30UHebPc
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvX2lkIjoiMjAiLCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE1MTYyMzkwMjJ9.NyjdxD0c9b_Madh_qJFrAmpBBjFv9YMsMD4putkNQxQ
 
 ###
 GET http://localhost:3000/api/clientes/85
@@ -89,7 +89,7 @@ GET http://localhost:3000/api/profesores/91
 
 ### REGISTRO - LOGIN
 ###
-POST http://apolo.ngrok.io/api/usuarios/registro
+POST http://localhost:3000/api/usuarios/registro
 Content-Type: application/json
 
 {
@@ -104,6 +104,14 @@ POST http://localhost:3000/api/usuarios/login
 Content-Type: application/json
 
 {
-  "email": "mario1@gmail.com",
+  "email": "belen@gmail.com",
   "password": "mariO12345!"
 }
+
+###
+GET http://localhost:3000/api/clientes/me
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvX2lkIjoyMCwiZmVjaGFfZXhwaXJhY2lvbiI6MTY0MDI3MzA5NywiaWF0IjoxNjM5NjY4Mjk3fQ.Ui1Wlrp8TvwlsQSm8R-viK_dGeo2Yt6uTJzlJGSKjHw
+
+###
+GET http://localhost:3000/api/usuarios/perfil
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvX2lkIjoxOCwiZmVjaGFfZXhwaXJhY2lvbiI6MTY0MDI3NDU2MywiaWF0IjoxNjM5NjY5NzYzfQ.XbPUaRTE9ZleD62bL6xAl7AGMIMEINMZyCSMMLiMlB8

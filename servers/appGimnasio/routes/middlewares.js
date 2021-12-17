@@ -14,7 +14,7 @@ const checkToken = async (req, res, next) => {
 
     let obj;
     try {
-        obj = jwt.verify(token, 'en un lugar de la mancha');
+        obj = jwt.verify(token, process.env.SECRET_KEY);
     } catch (err) {
         return res.json({ error: 'El token es incorrecto' });
     }
@@ -33,4 +33,12 @@ const checkToken = async (req, res, next) => {
     next();
 }
 
-module.exports = { checkToken };
+const checkRole = (req, res, next) => {
+    if (req.user.role === 'admin') {
+        next();
+    } else {
+        res.json({ error: 'No estás autorizado' });
+    }
+}
+
+module.exports = { checkToken, checkRole };

@@ -25,8 +25,8 @@ const createToken = (usuario) => {
         usuario_id: usuario.id,
         fecha_expiracion: dayjs().add(1, 'week').unix()
     }
-    // TODO: mover datos al fichero de entorno
-    return jwt.sign(obj, 'en un lugar de la mancha');
+
+    return jwt.sign(obj, process.env.SECRET_KEY);
 }
 
 module.exports = {
