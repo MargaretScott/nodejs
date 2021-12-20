@@ -1,0 +1,12 @@
+.clientes{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cliente{
+    width: 300px;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid lightgray;
+}

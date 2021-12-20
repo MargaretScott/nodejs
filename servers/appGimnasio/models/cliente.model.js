@@ -2,11 +2,14 @@
 const { executeQuery, executeQueryOne } = require('../helpers');
 const QueryManager = require('../QueryManager');
 
-const getAll = () => {
+const getAll = (page, total) => {
     // const queryMg = new QueryManager('select * from clientes');
     // return queryMg.executeQuery();
-    return new QueryManager('select * from clientes').executeQuery();
-    // return executeQuery('select * from clientes');
+    // return new QueryManager('select * from clientes').executeQuery();
+    return executeQuery(
+        'select * from clientes limit ? offset ?',
+        [total, (page - 1) * total]
+    );
 }
 
 const getById = (clienteId) => {

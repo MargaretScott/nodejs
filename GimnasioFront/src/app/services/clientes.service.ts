@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
+import { Cliente } from '../interfaces/cliente.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,28 @@ export class ClientesService {
     this.baseUrl = 'http://localhost:3000/api/clientes';
   }
 
-  getAll(): Promise<any> {
-    return firstValueFrom(this.httpClient.get<any>(this.baseUrl));
+  getAll(page: number = 1): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        authorization: localStorage.getItem('token')!
+      })
+    }
+
+    return firstValueFrom(
+      this.httpClient.get<any>(this.baseUrl + '?page=' + page, httpOptions)
+    );
+  }
+
+  create(formValue: Cliente): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        authorization: localStorage.getItem('token')!
+      })
+    }
+
+    return firstValueFrom(
+      this.httpClient.post<any>(this.baseUrl, formValue, httpOptions)
+    );
   }
 
 }

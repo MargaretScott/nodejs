@@ -17,18 +17,31 @@ const clienteModel = require('../../models/cliente.model');
 //         });
 // });
 
+
+
+
+
 router.get('/', async (req, res) => {
     try {
-        const result = await clienteModel.getAll();
+        // Recuperar los valores de total y page
+        const page = req.query.page || 1;
+        const total = req.query.total || 10;
+
+        const result = await clienteModel.getAll(parseInt(page), parseInt(total));
         res.json(result);
     } catch (err) {
         res.json({ error: err.message });
     };
 });
 
+
+
+
+
+
+
 router.get('/mayores/:edad', async (req, res) => {
     try {
-        // TODO: hablar del destructuring
         const result = await clienteModel.getByEdad(req.params.edad);
         res.json(result);
     } catch (err) {

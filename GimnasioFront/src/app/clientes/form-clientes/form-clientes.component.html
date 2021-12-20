@@ -1,1 +1,44 @@
-<p>form-clientes works!</p>
+<h2>Nuevo cliente</h2>
+<div class="row">
+    <div class="col-12 col-md-6 offset-md-3">
+        <form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="mb-5">
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control" formControlName="nombre">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Apellidos</label>
+                <input type="text" class="form-control" formControlName="apellidos">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Dirección</label>
+                <input type="text" class="form-control" formControlName="direccion">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="text" class="form-control" formControlName="email">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Edad</label>
+                <input type="text" class="form-control" formControlName="edad">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Género</label>
+                <input type="text" class="form-control" formControlName="genero">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Cuota</label>
+                <input type="text" class="form-control" formControlName="cuota">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fecha Nacimiento</label>
+                <input type="date" class="form-control" formControlName="fecha_nacimiento">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">D.N.I.</label>
+                <input type="text" class="form-control" formControlName="dni">
+            </div>
+            <input type="submit" value="Enviar" class="btn btn-info">
+        </form>
+    </div>
+</div>

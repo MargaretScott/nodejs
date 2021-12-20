@@ -1,1 +1,26 @@
-<p>lista-clientes works!</p>
+<h2>Listado de clientes</h2>
+<div class="botones">
+    <button class="btn btn-success me-3" (click)="cambiaPagina(false)">Anterior</button>
+    {{pagina}}
+    <button class="btn btn-success ms-3" (click)="cambiaPagina(true)">Siguiente</button>
+</div>
+<div class="clientes">
+    <div class="cliente" *ngFor="let cliente of arrClientes">
+        <h4 class="mb-3">{{cliente.nombre}} {{cliente.apellidos}}</h4>
+        <hr>
+        <p>✉️ {{cliente.email}}</p>
+        <!-- <p *ngIf="cliente.direccion">📍 {{cliente.direccion}}</p> -->
+        <p>📍 {{cliente.direccion ? cliente.direccion : 'sin dirección'}}</p>
+        <p>💰 {{cliente.cuota | currency:'EUR'}}</p>
+        <p>📅 {{cliente.fecha_nacimiento | date:'dd-MM-YYYY'}}</p>
+    </div>
+</div>
+
+<!-- 
+    - Dos botones: Anterior y Siguiente
+    - Los dos botones lanzan el mismo método 
+    - Estos botones cambian el número de la página (variable en el TS)
+    - Cuando se cambie el número de la página, volver a hacer la petición con la página actual
+
+    TODO: return de función con async
+ -->

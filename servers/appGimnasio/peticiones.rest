@@ -17,11 +17,12 @@ POST http://localhost:3000/clientes/update
 
 ### API URLs
 ###
-GET http://localhost:3000/api/clientes
+GET http://localhost:3000/api/clientes?page=2&total=50
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvX2lkIjoiMjAiLCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE1MTYyMzkwMjJ9.NyjdxD0c9b_Madh_qJFrAmpBBjFv9YMsMD4putkNQxQ
 
 ###
 GET http://localhost:3000/api/clientes/85
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvX2lkIjoiMjAiLCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE1MTYyMzkwMjJ9.NyjdxD0c9b_Madh_qJFrAmpBBjFv9YMsMD4putkNQxQ
 
 ###
 GET http://localhost:3000/api/clientes/mayores/74
@@ -29,6 +30,7 @@ GET http://localhost:3000/api/clientes/mayores/74
 ###
 POST http://localhost:3000/api/clientes
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvX2lkIjoiMjAiLCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE1MTYyMzkwMjJ9.NyjdxD0c9b_Madh_qJFrAmpBBjFv9YMsMD4putkNQxQ
 
 {
   "nombre": "Ramiro",

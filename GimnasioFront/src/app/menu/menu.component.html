@@ -1,9 +1,23 @@
 <div class="container">
     <ul class="menu mt-3">
-        <li [routerLink]="['/clientes']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Lista Clientes</li>
-        <li [routerLink]="['/clientes/new']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Nuevo Cliente</li>
-        <li [routerLink]="['/login']" routerLinkActive="active">Login</li>
-        <li [routerLink]="['/registro']" routerLinkActive="active">Registro</li>
+        <li [routerLink]="['/clientes']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" *ngIf="isLogged">
+            Lista Clientes
+        </li>
+        <li [routerLink]="['/clientes/new']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" *ngIf="isLogged">
+            Nuevo Cliente
+        </li>
+        <li [routerLink]="['/perfil']" routerLinkActive="active" *ngIf="isLogged">
+            Perfil
+        </li>
+        <li [routerLink]="['/login']" routerLinkActive="active" *ngIf="!isLogged">
+            Login
+        </li>
+        <li [routerLink]="['/registro']" routerLinkActive="active" *ngIf="!isLogged">
+            Registro
+        </li>
+        <li (click)="onClickLogout()" *ngIf="isLogged">
+            Logout
+        </li>
     </ul>
 </div>
 <hr>
